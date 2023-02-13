@@ -33,11 +33,11 @@ abstract class MultiImagePickerPlatform extends PlatformInterface {
   }
 
   Future<bool> requestThumbnail(
-      String identifier,
-      int width,
-      int height,
-      int quality,
-      ) {
+    String identifier,
+    int width,
+    int height,
+    int quality,
+  ) {
     throw UnimplementedError('requestThumbnail has not been implemented.');
   }
 

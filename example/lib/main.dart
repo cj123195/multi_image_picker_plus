@@ -4,12 +4,12 @@ import 'dart:async';
 import 'package:multi_image_picker_plus/multi_image_picker_plus.dart';
 
 void main() => runApp(MaterialApp(
-  home: const MyApp(),
-  theme: ThemeData(
-    colorSchemeSeed: Colors.deepOrange,
-    brightness: Brightness.dark,
-  ),
-));
+      home: const MyApp(),
+      theme: ThemeData(
+        colorSchemeSeed: Colors.deepOrange,
+        brightness: Brightness.dark,
+      ),
+    ));
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -113,9 +113,9 @@ class _MyAppState extends State<MyApp> {
         selectedAssets: images,
         cupertinoOptions: CupertinoOptions(
           doneButton:
-          UIBarButtonItem(title: 'Confirm', tintColor: colorScheme.primary),
+              UIBarButtonItem(title: 'Confirm', tintColor: colorScheme.primary),
           cancelButton:
-          UIBarButtonItem(title: 'Cancel', tintColor: colorScheme.primary),
+              UIBarButtonItem(title: 'Cancel', tintColor: colorScheme.primary),
           albumButtonColor: colorScheme.primary,
           settings: iosSettings,
         ),

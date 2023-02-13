@@ -27,7 +27,7 @@ class MethodChannelMultiImagePicker extends MultiImagePickerPlatform {
           'selectedAssets': selectedAssets
               .map(
                 (Asset asset) => asset.identifier,
-          )
+              )
               .toList(),
         },
       );
@@ -54,11 +54,11 @@ class MethodChannelMultiImagePicker extends MultiImagePickerPlatform {
 
   @override
   Future<bool> requestThumbnail(
-      String identifier,
-      int width,
-      int height,
-      int quality,
-      ) async {
+    String identifier,
+    int width,
+    int height,
+    int quality,
+  ) async {
     if (width < 0) {
       throw ArgumentError.value(width, 'width cannot be negative');
     }
@@ -99,7 +99,7 @@ class MethodChannelMultiImagePicker extends MultiImagePickerPlatform {
   Future<bool> requestOriginal(String identifier, quality) async {
     try {
       final bool ret =
-      await methodChannel.invokeMethod("requestOriginal", <String, dynamic>{
+          await methodChannel.invokeMethod("requestOriginal", <String, dynamic>{
         "identifier": identifier,
         "quality": quality,
       });
@@ -142,7 +142,7 @@ class MethodChannelMultiImagePicker extends MultiImagePickerPlatform {
       } else if (metaKey == '{GPS}') {
         final Map<String, dynamic> gpsMap = <String, dynamic>{};
         final Map<String, dynamic> metaMap =
-        Map<String, dynamic>.from(metaValue);
+            Map<String, dynamic>.from(metaValue);
         metaMap.forEach((String key, dynamic value) {
           if (key == 'GPSVersion') {
             gpsMap['GPSVersionID'] = value;

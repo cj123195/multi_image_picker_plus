@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 
 import 'asset.dart';
 
-
 @immutable
 class AssetThumbImageProvider extends ImageProvider<AssetThumbImageProvider> {
   const AssetThumbImageProvider(

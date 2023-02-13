@@ -1,0 +1,209 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    # 类型定义采用大驼峰
+    camel_case_types: true
+    # 函数拓展采用大驼峰
+    camel_case_extensions: true
+    # 静态变量采用小驼峰
+    constant_identifier_names: false
+    # 库和文件名采用小写+下划线方式命名
+    file_names: true
+    library_names: true
+    # 每行字符不得超过80个
+    lines_longer_than_80_chars: true
+    # 非静态变量使用小驼峰命名
+    non_constant_identifier_names: true
+
+    # 包引用排序
+    # dart开头的包排在最前面
+    # package开头的包排在相对引用包前面
+    # exports列在单独模块
+    # 每个模块引用按字母顺序排序
+    directives_ordering: true
+    # 优先使用相对路径引用
+    prefer_relative_imports: true
+    # 避免引用包内的具体实现文件
+    implementation_imports: true
+
+    # 注释
+    # 注释使用三斜杠 标识
+    comment_references: true
+    # 注释中可引用范围内的变量
+    slash_for_doc_comments: true
+
+    # 控制流中尽量使用大括号
+    curly_braces_in_flow_control_structures: true
+
+    # 避免初始化变量为null
+    avoid_init_to_null: true
+
+    # 避免不需要的大括号
+    unnecessary_brace_in_string_interps: true
+    # 使用相邻字符串的方式连接字符串
+    prefer_adjacent_string_concatenation: true
+
+    # 尽量使用显式类型的方式初始化集合
+    prefer_collection_literals: true
+    # 使用isEmpty和isNotEmpty判断是否为空
+    prefer_is_empty: true
+    prefer_is_not_empty: true
+
+    # 去除不必要的lambdas表达式
+    unnecessary_lambdas: true
+    # 函数默认值尽量使用=来赋值
+    prefer_equal_for_default_values: true
+    # 使用函数声明的方式将函数与变量做绑定
+    prefer_function_declarations_over_variables: true
+
+    # 如无特殊作用，不用专门定义Getter和Setter
+    unnecessary_getters_setters: true
+    # 如无同名局部变量不必使用this方式调用变量
+    unnecessary_this: true
+    # 优先使用final修饰参数
+    prefer_final_fields: true
+    # 可以考虑使用..这样的方式而不是返回this指针的方式来实现流式调用
+    avoid_returning_this: true
+    # 避免返回null
+    avoid_returning_null: true
+
+    # 避免构造函数使用{}做空实现，可以直接使用
+    empty_constructor_bodies: true
+    # 推荐在构造函数中直接对成员变量进行赋值
+    prefer_initializing_formals: true
+    # 去掉new关键字
+    unnecessary_new: true
+    # 在const环境中，避免使用const关键字
+    unnecessary_const: true
+
+    # 对捕获异常不处理的情况，建议使用rethrow方式重新抛出
+    use_rethrow_when_possible: true
+
+    # 建议尽可能使用mixin机制
+    prefer_mixin: true
+
+    # 未初始化变量尽量声明类型
+    prefer_typing_uninitialized_variables: true
+
+    # 如果重写了==同时也需重写hashCode
+    hash_and_equals: true
+    # 非immutable类不要重写hashCode和==，否则在集合中会出现bug
+    avoid_equals_and_hash_code_on_mutable_classes: true
+    # 在自定义==时，不要做null检查
+    avoid_null_checks_in_equality_operators: true
+
+    # 避免空else语句
+    avoid_empty_else: true
+    # 避免使用隐形类型传递
+    avoid_shadowing_type_parameters: true
+    # 避免类型做参数
+    avoid_types_as_parameter_names: true
+    # 避免await非future对象
+    await_only_futures: true
+    # 避免catch空实现
+    empty_catches: true
+    # 集合的remove需要传递符合集合类型的参数
+    list_remove_unrelated_type: true
+    # case中避免重复
+    no_duplicate_case_values: true
+    # deprecated函数或者变量需要注明相关信息
+    provide_deprecation_message: true
+    # 去掉不必要的重写注释
+    unnecessary_overrides: true
+    # 两个变量比较时，避免类型不一致
+    unrelated_type_equality_checks: true
+    # 避免赋值给void类型变量
+    void_checks: true
+    # 正则表达式合法性校验
+    valid_regexps: true
+
+    # 非空变量使用required关键字
+    always_require_non_null_named_parameters: true
+    # 对重写的方法和变量添加override注解
+    annotate_overrides: true
+    # 重写方法的参数不要改变参数名称
+    avoid_renaming_method_parameters: true
+    # 不要在void函数中返回null
+    avoid_returning_null_for_void: true
+    # 避免在单个函数调用中使用传递调用语法
+    avoid_single_cascade_in_expression_statements: true
+    # 避免在finally语句块中使用控制流语句
+    control_flow_in_finally: true
+    # 避免空语句
+    empty_statements: true
+    # cases语句的各种情况需要完整覆盖
+    exhaustive_cases: true
+    # 避免传递null给闭包函数
+    null_closures: true
+    # 避免重写类的field
+    overridden_fields: true
+    # 判空逻辑中建议使用??=语法
+    prefer_conditional_assignment: true
+    # 判断集合或字符串的包含逻辑使用contains而不是indexOf
+    prefer_contains: true
+    # 空判断尽量使用??操作符
+    prefer_if_null_operators: true
+    # 允许情况下，list使用内联的方式声明
+    prefer_inlined_adds: true
+    # 推荐使用is!操作符
+    prefer_is_not_operator: true
+    # 推荐使用?.操作符
+    prefer_null_aware_operators: true
+    # 类型定义尽可能使用void而不是null
+    prefer_void_to_null: true
+    # 避免递归调用getters
+    recursive_getters: true
+    # 避免在空判断中使用null
+    unnecessary_null_in_if_null_operators: true
+    # 去掉不必要的反斜线
+    unnecessary_string_escapes: true
+    # 避免不必要的字符串引用逻辑
+    unnecessary_string_interpolations: true
+
+    # 避免生产环境使用print
+    avoid_print: true
+    # 去掉无用的container节点
+    avoid_unnecessary_containers: true
+    # 避免在flutter代码中引用web相关的库
+    avoid_web_libraries_in_flutter: true
+    # 在state create函数中不加入额外逻辑
+    no_logic_in_create_state: true
+    # 优先使用const构造函数
+    prefer_const_constructors: true
+    # 在immutable类定义中使用const构造函数
+    prefer_const_constructors_in_immutables: true
+    # 尽可能定义成const变量
+    prefer_const_declarations: true
+    # 在immutable类创建中尽可能使用const变量
+    prefer_const_literals_to_create_immutables: true
+    # 优先使用SizedBox而不是Container
+    sized_box_for_whitespace: true
+    # 使用8位16进制整数标识颜色值
+    use_full_hex_values_for_flutter_colors: true
+    # 在构造函数中接入key参数
+    use_key_in_widget_constructors: true
+
+    # 无用代码清理
+    unnecessary_statements: true
+    # 控制流语句分散到不同层
+    always_put_control_body_on_new_line: true
+    # required修饰变量排到变量列表前面
+    always_put_required_named_parameters_first: true
+    # dart.async.StreamSubscription需要在恰当实际嗲用cancel方法
+    cancel_subscriptions: true
+    # 倾向在初始化列表中增加assert
+    prefer_asserts_in_initializer_lists: true
+    # 符合标准情况下添加final关键字
+    prefer_final_locals: true
+    # 构造函数排在变量之前
+    sort_constructors_first: true
+    sort_unnamed_constructors_first: true
+    # 在比较值钱先测试类型是否符合要求
+    test_types_in_equals: true
+    # 不免不必要的null判断
+    unnecessary_null_aware_assignments: true
+    # 去掉不必要的圆括号
+    unnecessary_parenthesis: true
+    # 避免不安全的HTML的API
+    unsafe_html: true

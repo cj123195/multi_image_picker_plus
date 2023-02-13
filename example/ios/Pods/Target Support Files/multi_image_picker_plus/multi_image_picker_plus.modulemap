@@ -1,0 +1,6 @@
+framework module multi_image_picker_plus {
+  umbrella header "multi_image_picker_plus-umbrella.h"
+
+  export *
+  module * { export * }
+}

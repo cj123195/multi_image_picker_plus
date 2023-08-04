@@ -44,6 +44,16 @@ Add the following permissions to your `AndroidManifest.xml`, located in `<projec
 <uses-permission android:name="android.permission.CAMERA" />
 ```
 
+If your app targets Android 13 with targetSdk >= 33 then you will need to replace READ_EXTERNAL_STORAGE permission to this in your `AndroidManifest.xml`.
+[Android documentation here](https://developer.android.com/about/versions/13/behavior-changes-13#granular-media-permissions)
+
+```
+<uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+<uses-permission
+    android:name="android.permission.READ_EXTERNAL_STORAGE"
+    android:maxSdkVersion="32" />
+```
+
 ## Usage
 
 ```dart

@@ -19,7 +19,6 @@ import androidx.exifinterface.media.ExifInterface
 import com.sangcomz.fishbun.FishBun
 import com.sangcomz.fishbun.FishBunCreator
 import com.sangcomz.fishbun.adapter.image.impl.GlideAdapter
-import com.sangcomz.fishbun.define.Define
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
@@ -152,7 +151,7 @@ class MultiImagePickerPlusPlugin: FlutterPlugin, MethodCallHandler, ActivityAwar
     if (requestCode == requestCodeChoose && resultCode == Activity.RESULT_CANCELED) {
       finishWithError("CANCELLED", "The user has cancelled the selection")
     } else if (requestCode == requestCodeChoose && resultCode == Activity.RESULT_OK) {
-      val photos: List<Uri>? = data!!.getParcelableArrayListExtra(Define.INTENT_PATH)
+      val photos: List<Uri>? = data!!.getParcelableArrayListExtra(FishBun.INTENT_PATH)
       if (photos == null) {
         clearMethodCallAndResult()
         return false

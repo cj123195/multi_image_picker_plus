@@ -533,43 +533,90 @@ enum PHAssetCollectionType {
 }
 
 enum PHAssetCollectionSubtype {
-  /// PHAssetCollectionTypeAlbum regular subtypes
-  albumRegular(2),
-  albumSyncedEvent(3),
-  albumSyncedFaces(4),
-  albumSyncedAlbum(5),
-  albumImported(6),
+  albumRegular,
+  albumSyncedEvent,
+  albumSyncedFaces,
+  albumSyncedAlbum,
+  albumImported,
+  albumMyPhotoStream,
+  albumCloudShared,
+  smartAlbumGeneric,
+  smartAlbumPanoramas,
+  smartAlbumVideos,
+  smartAlbumFavorites,
+  smartAlbumTimelapses,
+  smartAlbumAllHidden,
+  smartAlbumRecentlyAdded,
+  smartAlbumBursts,
+  smartAlbumSlomoVideos,
+  smartAlbumUserLibrary,
+  smartAlbumSelfPortraits,
+  smartAlbumScreenshots,
+  smartAlbumDepthEffect,
+  smartAlbumLivePhotos,
+  smartAlbumAnimated,
+  smartAlbumLongExposures,
+  smartAlbumUnableToUpload,
+  smartAlbumRAW,
+}
 
-  /// PHAssetCollectionTypeAlbum shared subtypes
-  albumMyPhotoStream(100),
-  albumCloudShared(101),
-
-  /// PHAssetCollectionTypeSmartAlbum subtypes
-  smartAlbumGeneric(200),
-  smartAlbumPanoramas(201),
-  smartAlbumVideos(202),
-  smartAlbumFavorites(203),
-  smartAlbumTimelapses(204),
-  smartAlbumAllHidden(205),
-  smartAlbumRecentlyAdded(206),
-  smartAlbumBursts(207),
-  smartAlbumSlomoVideos(208),
-  smartAlbumUserLibrary(209),
-  smartAlbumSelfPortraits(210),
-  smartAlbumScreenshots(211),
-  smartAlbumDepthEffect(212),
-  smartAlbumLivePhotos(213),
-  smartAlbumAnimated(214),
-  smartAlbumLongExposures(215),
-  smartAlbumUnableToUpload(216),
-  smartAlbumRAW(217),
-
-  /// Used for fetching, if you don't care about the exact subtype
-  any(9223372036854775807);
-
-  const PHAssetCollectionSubtype(this.code);
-
-  final int code;
+extension PHAssetCollectionSubtypeExtension on PHAssetCollectionSubtype {
+  int get code {
+    switch (this) {
+      case PHAssetCollectionSubtype.albumRegular:
+        return 2;
+      case PHAssetCollectionSubtype.albumSyncedEvent:
+        return 3;
+      case PHAssetCollectionSubtype.albumSyncedFaces:
+        return 4;
+      case PHAssetCollectionSubtype.albumSyncedAlbum:
+        return 5;
+      case PHAssetCollectionSubtype.albumImported:
+        return 6;
+      case PHAssetCollectionSubtype.albumMyPhotoStream:
+        return 100;
+      case PHAssetCollectionSubtype.albumCloudShared:
+        return 101;
+      case PHAssetCollectionSubtype.smartAlbumGeneric:
+        return 200;
+      case PHAssetCollectionSubtype.smartAlbumPanoramas:
+        return 201;
+      case PHAssetCollectionSubtype.smartAlbumVideos:
+        return 202;
+      case PHAssetCollectionSubtype.smartAlbumFavorites:
+        return 203;
+      case PHAssetCollectionSubtype.smartAlbumTimelapses:
+        return 204;
+      case PHAssetCollectionSubtype.smartAlbumAllHidden:
+        return 205;
+      case PHAssetCollectionSubtype.smartAlbumRecentlyAdded:
+        return 206;
+      case PHAssetCollectionSubtype.smartAlbumBursts:
+        return 207;
+      case PHAssetCollectionSubtype.smartAlbumSlomoVideos:
+        return 208;
+      case PHAssetCollectionSubtype.smartAlbumUserLibrary:
+        return 209;
+      case PHAssetCollectionSubtype.smartAlbumSelfPortraits:
+        return 210;
+      case PHAssetCollectionSubtype.smartAlbumScreenshots:
+        return 211;
+      case PHAssetCollectionSubtype.smartAlbumDepthEffect:
+        return 212;
+      case PHAssetCollectionSubtype.smartAlbumLivePhotos:
+        return 213;
+      case PHAssetCollectionSubtype.smartAlbumAnimated:
+        return 214;
+      case PHAssetCollectionSubtype.smartAlbumLongExposures:
+        return 215;
+      case PHAssetCollectionSubtype.smartAlbumUnableToUpload:
+        return 216;
+      case PHAssetCollectionSubtype.smartAlbumRAW:
+        return 217;
+      default:
+        return -1; // Or handle this however you'd like
+    }
+  }
 }
 
 enum PHAssetSourceType {

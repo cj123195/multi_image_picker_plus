@@ -6,11 +6,11 @@ import '../multi_image_picker_plus_platform_interface.dart';
 class MultiImagePicker {
   /// Invokes the multi image picker selector.
   ///
-  /// On iOS you can pass also [cupertinoOptions] parameter which should be
-  /// an instance of [CupertinoOptions] class. It allows you
+  /// On iOS you can pass also [iosOptions] parameter which should be
+  /// an instance of [IOSOptions] class. It allows you
   /// to customize the look of the image picker. On Android
-  /// you can pass the [materialOptions] parameter, which should
-  /// be an instance of [MaterialOptions] class.
+  /// you can pass the [androidOptions] parameter, which should
+  /// be an instance of [AndroidOptions] class.
   ///
   /// If you would like to present the picker with pre selected
   /// photos, you can pass [selectedAssets] with List of Asset
@@ -24,13 +24,13 @@ class MultiImagePicker {
   /// you can refer to the docs for the Asset class.
   static Future<List<Asset>> pickImages({
     List<Asset> selectedAssets = const [],
-    CupertinoOptions cupertinoOptions = const CupertinoOptions(),
-    MaterialOptions materialOptions = const MaterialOptions(),
+    IOSOptions iosOptions = const IOSOptions(),
+    AndroidOptions androidOptions = const AndroidOptions(),
   }) =>
       MultiImagePickerPlatform.instance.pickImages(
         selectedAssets: selectedAssets,
-        cupertinoOptions: cupertinoOptions,
-        materialOptions: materialOptions,
+        iosOptions: iosOptions,
+        androidOptions: androidOptions,
       );
 
   /// Requests a thumbnail with [width], [height]

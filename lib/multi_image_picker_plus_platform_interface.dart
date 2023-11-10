@@ -26,8 +26,8 @@ abstract class MultiImagePickerPlatform extends PlatformInterface {
 
   Future<List<Asset>> pickImages({
     List<Asset> selectedAssets = const [],
-    CupertinoOptions cupertinoOptions = const CupertinoOptions(),
-    MaterialOptions materialOptions = const MaterialOptions(),
+    IOSOptions iosOptions = const IOSOptions(),
+    AndroidOptions androidOptions = const AndroidOptions(),
   }) {
     throw UnimplementedError('pickImages has not been implemented.');
   }

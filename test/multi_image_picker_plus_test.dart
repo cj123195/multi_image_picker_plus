@@ -11,17 +11,21 @@ void main() {
     final List<MethodCall> log = <MethodCall>[];
 
     setUp(() {
-      channel.setMockMethodCallHandler((MethodCall methodCall) async {
-        log.add(methodCall);
-        if (methodCall.method == 'requestOriginal' ||
-            methodCall.method == 'requestThumbnail') {
-          return true;
-        }
-        return [
-          {'identifier': 'SOME_ID_1'},
-          {'identifier': 'SOME_ID_2'}
-        ];
-      });
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+          .setMockMethodCallHandler(
+        channel,
+        (MethodCall methodCall) async {
+          log.add(methodCall);
+          if (methodCall.method == 'requestOriginal' ||
+              methodCall.method == 'requestThumbnail') {
+            return true;
+          }
+          return [
+            {'identifier': 'SOME_ID_1'},
+            {'identifier': 'SOME_ID_2'}
+          ];
+        },
+      );
 
       log.clear();
     });
@@ -36,8 +40,8 @@ void main() {
             isMethodCall('pickImages', arguments: <String, dynamic>{
               'maxImages': 5,
               'enableCamera': false,
-              'iosOptions': const CupertinoOptions().toJson(),
-              'androidOptions': const MaterialOptions().toJson(),
+              'iosOptions': const IOSOptions().toJson(),
+              'androidOptions': const AndroidOptions().toJson(),
               'selectedAssets': [],
             }),
           ],
@@ -56,8 +60,8 @@ void main() {
             isMethodCall('pickImages', arguments: <String, dynamic>{
               'maxImages': 5,
               'enableCamera': false,
-              'iosOptions': const CupertinoOptions().toJson(),
-              'androidOptions': const MaterialOptions().toJson(),
+              'iosOptions': const IOSOptions().toJson(),
+              'androidOptions': const AndroidOptions().toJson(),
               'selectedAssets': [asset.identifier],
             }),
           ],
@@ -65,7 +69,7 @@ void main() {
       });
 
       test('passes cuppertino options argument correctly', () async {
-        const CupertinoOptions cupertinoOptions = CupertinoOptions(
+        const IOSOptions iosOptions = IOSOptions(
           settings: CupertinoSettings(
             theme: ThemeSetting(
               backgroundColor: Colors.blue,
@@ -76,7 +80,7 @@ void main() {
           ),
         );
 
-        await MultiImagePicker.pickImages(cupertinoOptions: cupertinoOptions);
+        await MultiImagePicker.pickImages(iosOptions: iosOptions);
 
         expect(
           log,
@@ -84,8 +88,8 @@ void main() {
             isMethodCall('pickImages', arguments: <String, dynamic>{
               'maxImages': 5,
               'enableCamera': false,
-              'iosOptions': cupertinoOptions.toJson(),
-              'androidOptions': const MaterialOptions().toJson(),
+              'iosOptions': iosOptions.toJson(),
+              'androidOptions': const AndroidOptions().toJson(),
               'selectedAssets': [],
             }),
           ],
@@ -93,7 +97,7 @@ void main() {
       });
 
       test('passes meterial options argument correctly', () async {
-        const MaterialOptions materialOptions = MaterialOptions(
+        const AndroidOptions androidOptions = AndroidOptions(
           actionBarTitle: "Aciton bar",
           allViewTitle: "All view title",
           actionBarColor: Colors.black,
@@ -104,7 +108,7 @@ void main() {
           useDetailsView: true,
           selectCircleStrokeColor: Colors.green,
         );
-        await MultiImagePicker.pickImages(materialOptions: materialOptions);
+        await MultiImagePicker.pickImages(androidOptions: androidOptions);
 
         expect(
           log,
@@ -112,8 +116,8 @@ void main() {
             isMethodCall('pickImages', arguments: <String, dynamic>{
               'maxImages': 5,
               'enableCamera': false,
-              'androidOptions': materialOptions.toJson(),
-              'iosOptions': const CupertinoOptions().toJson(),
+              'androidOptions': androidOptions.toJson(),
+              'iosOptions': const IOSOptions().toJson(),
               'selectedAssets': [],
             }),
           ],

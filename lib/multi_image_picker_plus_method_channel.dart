@@ -15,15 +15,15 @@ class MethodChannelMultiImagePicker extends MultiImagePickerPlatform {
   @override
   Future<List<Asset>> pickImages({
     List<Asset> selectedAssets = const [],
-    CupertinoOptions cupertinoOptions = const CupertinoOptions(),
-    MaterialOptions materialOptions = const MaterialOptions(),
+    IOSOptions iosOptions = const IOSOptions(),
+    AndroidOptions androidOptions = const AndroidOptions(),
   }) async {
     try {
       final List<dynamic> images = await methodChannel.invokeMethod(
         'pickImages',
         <String, dynamic>{
-          'iosOptions': cupertinoOptions.toJson(),
-          'androidOptions': materialOptions.toJson(),
+          'iosOptions': iosOptions.toJson(),
+          'androidOptions': androidOptions.toJson(),
           'selectedAssets': selectedAssets
               .map(
                 (Asset asset) => asset.identifier,

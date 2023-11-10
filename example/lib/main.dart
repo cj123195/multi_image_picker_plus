@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:multi_image_picker_plus/multi_image_picker_plus.dart';
 
 void main() => runApp(MaterialApp(
@@ -111,7 +111,7 @@ class _MyAppState extends State<MyApp> {
     try {
       resultList = await MultiImagePicker.pickImages(
         selectedAssets: images,
-        cupertinoOptions: CupertinoOptions(
+        iosOptions: IOSOptions(
           doneButton:
               UIBarButtonItem(title: 'Confirm', tintColor: colorScheme.primary),
           cancelButton:
@@ -119,7 +119,7 @@ class _MyAppState extends State<MyApp> {
           albumButtonColor: colorScheme.primary,
           settings: iosSettings,
         ),
-        materialOptions: MaterialOptions(
+        androidOptions: AndroidOptions(
           actionBarColor: colorScheme.surface,
           actionBarTitleColor: colorScheme.onSurface,
           statusBarColor: colorScheme.surface,
@@ -127,6 +127,7 @@ class _MyAppState extends State<MyApp> {
           allViewTitle: "All Photos",
           useDetailsView: false,
           selectCircleStrokeColor: colorScheme.primary,
+          exceptMimeType: {MimeType.PNG, MimeType.JPEG},
         ),
       );
     } on Exception catch (e) {

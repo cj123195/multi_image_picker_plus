@@ -1,9 +1,21 @@
 import 'dart:ui' show Color;
 
-class MaterialOptions {
-  const MaterialOptions({
+enum MimeType {
+  GIF("image/gif"),
+  PNG("image/png"),
+  JPEG("image/jpeg"),
+  BMP("image/bmp"),
+  WEBP("image/webp");
+
+  const MimeType(this.type);
+
+  final String type;
+}
+
+class AndroidOptions {
+  const AndroidOptions({
     this.maxImages,
-    this.enableCamera,
+    this.hasCameraInPickerPage,
     this.actionBarColor,
     this.actionBarTitle,
     this.lightStatusBar,
@@ -18,24 +30,63 @@ class MaterialOptions {
     this.backButtonDrawable,
     this.okButtonDrawable,
     this.autoCloseOnSelectionLimit,
+    this.exceptMimeType,
   });
 
+  /// Maximum number of selectable images.
+  ///
+  /// Defaults to 300.
   final int? maxImages;
-  final bool? enableCamera;
+
+  /// Is the camera displayed on the selection page.
+  ///
+  /// Defaults to false.
+  final bool? hasCameraInPickerPage;
+
+  /// The Background color of action bar.
   final Color? actionBarColor;
+
+  /// The Color of status bar.
   final Color? statusBarColor;
+
+  /// Is the status bar light mode.
   final bool? lightStatusBar;
+
+  /// The color of the title text.
   final Color? actionBarTitleColor;
+
+  /// Title text for 'all' view.
   final String? allViewTitle;
+
+  /// Title text for action bar.
   final String? actionBarTitle;
+
+  /// Whether start in 'all' view.
   final bool? startInAllView;
+
+  /// Whether can view image detail.
   final bool? useDetailsView;
+
+  /// The color of selected circle.
   final Color? selectCircleStrokeColor;
+
+  /// Prompt text for reaching the selection limit.
   final String? selectionLimitReachedText;
+
+  /// Text without any selected images.
   final String? textOnNothingSelected;
+
+  /// Back button image resources.
   final String? backButtonDrawable;
+
+  /// Ok button image resources.
   final String? okButtonDrawable;
+
+  /// Whether automatically close after reaching the selection limit.
   final bool? autoCloseOnSelectionLimit;
+
+  /// Filtered mime type
+  final Set<MimeType>? exceptMimeType;
 
   String _parseColor(Color? color) {
     return color == null
@@ -46,7 +97,7 @@ class MaterialOptions {
   Map<String, String> toJson() {
     return {
       "maxImages": (maxImages ?? 300).toString(),
-      "enableCamera": enableCamera == true ? "true" : "false",
+      "hasCameraInPickerPage": hasCameraInPickerPage == true ? "true" : "false",
       "actionBarColor": _parseColor(actionBarColor),
       "actionBarTitle": actionBarTitle ?? "",
       "actionBarTitleColor": _parseColor(actionBarTitleColor),
@@ -61,7 +112,9 @@ class MaterialOptions {
       "backButtonDrawable": backButtonDrawable ?? "",
       "okButtonDrawable": okButtonDrawable ?? "",
       "autoCloseOnSelectionLimit":
-          autoCloseOnSelectionLimit == true ? "true" : "false"
+          autoCloseOnSelectionLimit == true ? "true" : "false",
+      "exceptMimeType":
+          exceptMimeType?.map((e) => e.type).toList().join(',') ?? '',
     };
   }
 }

@@ -103,8 +103,6 @@ linter:
     await_only_futures: true
     # 避免catch空实现
     empty_catches: true
-    # 集合的remove需要传递符合集合类型的参数
-    list_remove_unrelated_type: true
     # case中避免重复
     no_duplicate_case_values: true
     # deprecated函数或者变量需要注明相关信息

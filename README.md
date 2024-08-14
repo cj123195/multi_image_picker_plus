@@ -19,11 +19,11 @@ Thanks to [Sh1d0w](https://github.com/Sh1d0w/), this plugin was first created by
 ## Screenshot
 Pick image
 
-<img src="https://github.com/cj123195/screenshot/blob/main/image_ios.gif" width="350">
+<img src="https://github.com/cj123195/multi_image_picker_plus/raw/main/screenshot/image_ios.gif" width="350">
 
-Pick video
+Pick video(Only iOS)
 
-<img src="https://github.com/cj123195/screenshot/blob/main/video_ios.gif" width="350">
+<img src="https://github.com/cj123195/multi_image_picker_plus/raw/main/screenshot/video_ios.gif" width="350">
 
 ## **Installation**
 
@@ -75,6 +75,9 @@ resultList = await MultiImagePicker.pickImages(
   ),
 );
 ```
+:::tip
+This library is only based on the Flutter wrapper of Android FishBun and iOS BSImagePicker. For detailed configuration, please refer to [FishBun](https://github.com/sangcomz/FishBun) and [BSImagePicker](https://github.com/mikaoj/BSImagePicker).
+:::
 
 ## Credits
 

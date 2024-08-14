@@ -1,4 +1,4 @@
-// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: lines_longer_than_80_chars, doc_directive_unknown
 
 class Metadata {
   Metadata.fromMap(Map json)

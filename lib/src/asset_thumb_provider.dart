@@ -27,8 +27,10 @@ class AssetThumbImageProvider extends ImageProvider<AssetThumbImageProvider> {
   final double scale;
 
   @override
-  ImageStreamCompleter loadBuffer(
-      AssetThumbImageProvider key, DecoderBufferCallback decode) {
+  ImageStreamCompleter loadImage(
+    AssetThumbImageProvider key,
+    ImageDecoderCallback decode,
+  ) {
     return MultiFrameImageStreamCompleter(
       codec: _loadAsync(key),
       scale: key.scale,
@@ -58,16 +60,15 @@ class AssetThumbImageProvider extends ImageProvider<AssetThumbImageProvider> {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    if (other.runtimeType != runtimeType) {
+  bool operator ==(Object other) {
+    if (other is! AssetThumbImageProvider) {
       return false;
     }
-    final AssetThumbImageProvider typedOther = other;
-    return asset.identifier == typedOther.asset.identifier &&
-        scale == typedOther.scale &&
-        width == typedOther.width &&
-        height == typedOther.height &&
-        quality == typedOther.quality;
+    return asset.identifier == other.asset.identifier &&
+        scale == other.scale &&
+        width == other.width &&
+        height == other.height &&
+        quality == other.quality;
   }
 
   @override

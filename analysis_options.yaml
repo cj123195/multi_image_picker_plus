@@ -65,8 +65,6 @@ linter:
     prefer_final_fields: true
     # 可以考虑使用..这样的方式而不是返回this指针的方式来实现流式调用
     avoid_returning_this: true
-    # 避免返回null
-    avoid_returning_null: true
 
     # 避免构造函数使用{}做空实现，可以直接使用
     empty_constructor_bodies: true
@@ -116,8 +114,6 @@ linter:
     # 正则表达式合法性校验
     valid_regexps: true
 
-    # 非空变量使用required关键字
-    always_require_non_null_named_parameters: true
     # 对重写的方法和变量添加override注解
     annotate_overrides: true
     # 重写方法的参数不要改变参数名称

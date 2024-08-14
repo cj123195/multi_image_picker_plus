@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:multi_image_picker_plus/multi_image_picker_plus.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 void main() => runApp(MaterialApp(
       home: const MyApp(),
@@ -21,27 +22,32 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   List<Asset> images = <Asset>[];
   String _error = 'No Error Dectected';
+  bool _permissionReady = false;
+  AppLifecycleListener? _lifecycleListener;
+  static const List<Permission> _permissions = [
+    Permission.storage,
+    Permission.camera
+  ];
 
-  @override
-  void initState() {
-    super.initState();
+  Future<void> _requestPermissions() async {
+    final Map<Permission, PermissionStatus> statues =
+        await _permissions.request();
+    if (statues.values.every((status) => status.isGranted)) {
+      _permissionReady = true;
+    }
   }
 
-  Widget _buildGridView() {
-    return GridView.count(
-      crossAxisCount: 3,
-      children: List.generate(images.length, (index) {
-        Asset asset = images[index];
-        return AssetThumb(
-          asset: asset,
-          width: 300,
-          height: 300,
-        );
-      }),
-    );
+  Future<void> _checkPermissions() async {
+    _permissionReady = (await Future.wait(_permissions.map((e) => e.isGranted)))
+        .every((isGranted) => isGranted);
   }
 
   Future<void> _loadAssets() async {
+    if (!_permissionReady) {
+      openAppSettings();
+      return;
+    }
+
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     List<Asset> resultList = <Asset>[];
@@ -100,8 +106,12 @@ class _MyAppState extends State<MyApp> {
       spacing: 5.0,
       cellsPerRow: 4,
     );
+    const AssetsSetting assetsSetting = AssetsSetting(
+      // Set to allow pick videos.
+      supportedMediaTypes: {MediaTypes.video, MediaTypes.image},
+    );
     final CupertinoSettings iosSettings = CupertinoSettings(
-      fetch: const FetchSetting(album: albumSetting),
+      fetch: const FetchSetting(album: albumSetting, assets: assetsSetting),
       theme: themeSetting,
       selection: selectionSetting,
       dismiss: dismissSetting,
@@ -127,7 +137,6 @@ class _MyAppState extends State<MyApp> {
           allViewTitle: "All Photos",
           useDetailsView: false,
           selectCircleStrokeColor: colorScheme.primary,
-          exceptMimeType: {MimeType.PNG, MimeType.JPEG},
         ),
       );
     } on Exception catch (e) {
@@ -143,6 +152,35 @@ class _MyAppState extends State<MyApp> {
       images = resultList;
       _error = error;
     });
+  }
+
+  @override
+  void initState() {
+    _requestPermissions();
+    _lifecycleListener = AppLifecycleListener(
+      onResume: _checkPermissions,
+    );
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _lifecycleListener?.dispose();
+    super.dispose();
+  }
+
+  Widget _buildGridView() {
+    return GridView.count(
+      crossAxisCount: 3,
+      children: List.generate(images.length, (index) {
+        Asset asset = images[index];
+        return AssetThumb(
+          asset: asset,
+          width: 300,
+          height: 300,
+        );
+      }),
+    );
   }
 
   @override

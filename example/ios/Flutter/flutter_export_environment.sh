@@ -1,6 +1,6 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/Volumes/SDK/flutter3.10.0"
+export "FLUTTER_ROOT=/Volumes/SDK/flutter3.24.0"
 export "FLUTTER_APPLICATION_PATH=/Volumes/Plugin/multi_image_picker_plus/multi_image_picker_plus/example"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_TARGET=lib/main.dart"

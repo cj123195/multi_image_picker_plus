@@ -1,8 +1,10 @@
 name: multi_image_picker_plus
 description: Flutter plugin that allows you to display multi image picker on iOS and Android.
-version: 0.0.4
-homepage: https://github.com/cj123195/multi_image_picker_plus.git
-repository: https://github.com/cj123195/multi_image_picker_plus.git
+version: 0.0.5
+homepage: https://github.com/cj123195/multi_image_picker_plus
+repository: https://github.com/cj123195/multi_image_picker_plus
+issue_tracker: https://github.com/cj123195/multi_image_picker_plus/issues
+documentation: https://github.com/cj123195/multi_image_picker_plus
 
 environment:
   sdk: '>=3.2.3 <4.0.0'
@@ -16,7 +18,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^4.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

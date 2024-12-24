@@ -9,7 +9,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.2.0'
+        classpath 'com.android.tools.build:gradle:8.5.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -26,9 +26,9 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 34
+    compileSdk 34
 
-    namespace 'com.tianxin.plus.muilti_image_picker'
+    namespace 'com.tianxin.plus.multi_image_picker'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

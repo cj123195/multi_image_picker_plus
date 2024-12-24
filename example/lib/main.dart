@@ -91,7 +91,7 @@ class _MyAppState extends State<MyApp> {
       allowSwipe: true,
     );
     final ThemeSetting themeSetting = ThemeSetting(
-      backgroundColor: colorScheme.background,
+      backgroundColor: colorScheme.surface,
       selectionFillColor: colorScheme.primary,
       selectionStrokeColor: colorScheme.onPrimary,
       previewSubtitleAttributes: const TitleAttribute(fontSize: 12.0),
@@ -137,6 +137,7 @@ class _MyAppState extends State<MyApp> {
           allViewTitle: "All Photos",
           useDetailsView: false,
           selectCircleStrokeColor: colorScheme.primary,
+          hasCameraInPickerPage: true,
         ),
       );
     } on Exception catch (e) {

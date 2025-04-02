@@ -143,7 +143,10 @@ class MultiImagePickerPlusPlugin : FlutterPlugin, MethodCallHandler, ActivityAwa
     }
 
     override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
-        channel!!.setMethodCallHandler(null)
+        channel?.setMethodCallHandler(null)
+        channel = null
+        messenger = null
+        context = null
     }
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {

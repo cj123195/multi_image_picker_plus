@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:multi_image_picker_plus/multi_image_picker_plus.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 void main() => runApp(MaterialApp(
       home: const MyApp(),
@@ -22,32 +21,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   List<Asset> images = <Asset>[];
   String _error = 'No Error Dectected';
-  bool _permissionReady = false;
-  AppLifecycleListener? _lifecycleListener;
-  static const List<Permission> _permissions = [
-    Permission.storage,
-    Permission.camera
-  ];
-
-  Future<void> _requestPermissions() async {
-    final Map<Permission, PermissionStatus> statues =
-        await _permissions.request();
-    if (statues.values.every((status) => status.isGranted)) {
-      _permissionReady = true;
-    }
-  }
-
-  Future<void> _checkPermissions() async {
-    _permissionReady = (await Future.wait(_permissions.map((e) => e.isGranted)))
-        .every((isGranted) => isGranted);
-  }
 
   Future<void> _loadAssets() async {
-    if (!_permissionReady) {
-      openAppSettings();
-      return;
-    }
-
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     List<Asset> resultList = <Asset>[];
@@ -153,21 +128,6 @@ class _MyAppState extends State<MyApp> {
       images = resultList;
       _error = error;
     });
-  }
-
-  @override
-  void initState() {
-    _requestPermissions();
-    _lifecycleListener = AppLifecycleListener(
-      onResume: _checkPermissions,
-    );
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _lifecycleListener?.dispose();
-    super.dispose();
   }
 
   Widget _buildGridView() {

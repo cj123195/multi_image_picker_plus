@@ -15,9 +15,7 @@
   },
   "source_files": "Classes/**/*",
   "dependencies": {
-    "Flutter": [
-
-    ],
+    "Flutter": [],
     "BSImagePicker": [
       "~> 3.1"
     ]

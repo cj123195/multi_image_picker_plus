@@ -123,6 +123,16 @@ public class MultiImagePickerPlusPlugin: NSObject, FlutterPlugin {
                 if(!(settings["list"] is NSNull)) {
                     setList(list: settings["list"] as! Dictionary<String, AnyObject>, vc: vc)
                 }
+                if #available(iOS 13.0, *) {
+                    // 只有当dismiss设置中没有allowSwipe或者allowSwipe为false时才禁用滑动关闭
+                    if let dismiss = options["dismiss"] as? [String: AnyObject],
+                       let allowSwipe = dismiss["allowSwipe"] as? Bool,
+                       allowSwipe == false {
+                        vc.isModalInPresentation = true
+                    } else {
+                        vc.isModalInPresentation = false
+                    }
+                }
                 if(!(settings["dismiss"] is NSNull)) {
                     setDismiss(dismiss: settings["dismiss"] as! Dictionary<String, AnyObject>, vc: vc)
                 }
@@ -430,6 +440,9 @@ public class MultiImagePickerPlusPlugin: NSObject, FlutterPlugin {
         }
         if(!(dismiss["allowSwipe"]  is NSNull)) {
             vc.settings.dismiss.allowSwipe = dismiss["allowSwipe"] as! Bool
+            if #available(iOS 13.0, *), !vc.settings.dismiss.allowSwipe {
+                vc.isModalInPresentation = true
+            }
         }
     }
 

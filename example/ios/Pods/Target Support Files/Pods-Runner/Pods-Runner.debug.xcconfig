@@ -1,11 +1,12 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
 CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/BSImagePicker" "${PODS_CONFIGURATION_BUILD_DIR}/multi_image_picker_plus"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/BSImagePicker" "${PODS_CONFIGURATION_BUILD_DIR}/multi_image_picker_plus" "${PODS_CONFIGURATION_BUILD_DIR}/permission_handler_apple"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/BSImagePicker/BSImagePicker.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/multi_image_picker_plus/multi_image_picker_plus.framework/Headers"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/BSImagePicker/BSImagePicker.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/multi_image_picker_plus/multi_image_picker_plus.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/permission_handler_apple/permission_handler_apple.framework/Headers"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) /usr/lib/swift '@executable_path/Frameworks' '@loader_path/Frameworks'
-LIBRARY_SEARCH_PATHS = $(inherited) "${DT_TOOLCHAIN_DIR}/usr/lib/swift/${PLATFORM_NAME}" /usr/lib/swift
-OTHER_LDFLAGS = $(inherited) -framework "BSImagePicker" -framework "Photos" -framework "UIKit" -framework "multi_image_picker_plus"
+LIBRARY_SEARCH_PATHS = $(inherited) "${TOOLCHAIN_DIR}/usr/lib/swift/${PLATFORM_NAME}" /usr/lib/swift
+OTHER_LDFLAGS = $(inherited) -ObjC -framework "BSImagePicker" -framework "Photos" -framework "UIKit" -framework "multi_image_picker_plus" -framework "permission_handler_apple"
+OTHER_MODULE_VERIFIER_FLAGS = $(inherited) "-F${PODS_CONFIGURATION_BUILD_DIR}/BSImagePicker" "-F${PODS_CONFIGURATION_BUILD_DIR}/Flutter" "-F${PODS_CONFIGURATION_BUILD_DIR}/multi_image_picker_plus" "-F${PODS_CONFIGURATION_BUILD_DIR}/permission_handler_apple"
 OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)

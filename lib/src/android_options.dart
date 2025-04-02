@@ -91,6 +91,7 @@ class AndroidOptions {
   String _parseColor(Color? color) {
     return color == null
         ? ''
+        // ignore: deprecated_member_use
         : '#${color.value.toRadixString(16).padLeft(8, '0')}';
   }
 

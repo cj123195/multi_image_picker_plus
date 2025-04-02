@@ -613,8 +613,6 @@ extension PHAssetCollectionSubtypeExtension on PHAssetCollectionSubtype {
         return 216;
       case PHAssetCollectionSubtype.smartAlbumRAW:
         return 217;
-      default:
-        return -1; // Or handle this however you'd like
     }
   }
 }

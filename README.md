@@ -90,6 +90,12 @@ This software uses the following open source packages:
 
 [image_picker](https://pub.dartlang.org/packages/image_picker) - Official Flutter image picker plugin`
 
+## Contributors
+
+Thanks to all the contributors who have helped improve this project:
+
+- [@thanhnhan111093](https://github.com/thanhnhan111093)
+
 ## Contribution
 
 Users are encouraged to become active participants in its continued development — by fixing any bugs that they encounter, or by improving the documentation wherever it’s found to be lacking.

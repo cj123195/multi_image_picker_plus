@@ -1,3 +1,6 @@
+## 0.0.8
+* Fix issues [#16](https://github.com/cj123195/multi_image_picker_plus/issues/16).
+
 ## 0.0.7
 * Fix issues [#15](https://github.com/cj123195/multi_image_picker_plus/issues/15).
 * Fix issues [#17](https://github.com/cj123195/multi_image_picker_plus/issues/17).
